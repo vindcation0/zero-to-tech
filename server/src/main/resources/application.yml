@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: zero-to-tech-server
+  ai:
+    openai:
+      # DeepSeek 的 API Key，支持通过系统环境变量 DEEPSEEK_API_KEY 读取，或者直接在此处替换为你的真实 Key
+      api-key: sk-2c6a19a0edd748e89307e80daa279328
+      # DeepSeek 官方兼容 OpenAI 协议的 base-url
+      base-url: https://api.deepseek.com
+      chat:
+        options:
+          # DeepSeek 对话模型名称
+          model: deepseek-chat
+          # 温度 0.3：适合结构化分析，输出稳定准确
+          temperature: 0.3
