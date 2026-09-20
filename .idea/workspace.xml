@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7807b5c6-f6eb-4fd6-b1c1-14573374538b" name="更改" comment="模块化">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+    <list default="true" id="7807b5c6-f6eb-4fd6-b1c1-14573374538b" name="更改" comment="React">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InputCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ResultCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ResultCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TextLabPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TextLabPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +55,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/vindacation/Desktop/zero-to-tech",
+    "last_opened_file_path": "C:/Users/vindacation/Desktop/zero-to-tech/src",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.fileTypes",
     "vue.rearranger.settings.migration": "true"
@@ -61,7 +63,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vindacation\Desktop\zero-to-tech\src" />
       <recent name="C:\Users\vindacation\Desktop\zero-to-tech" />
+      <recent name="C:\Users\vindacation\Desktop\zero-to-tech\src\components" />
     </key>
   </component>
   <component name="TaskManager">
@@ -74,7 +78,7 @@
       <workItem from="1789894307886" duration="1023000" />
       <workItem from="1789895686249" duration="1035000" />
       <workItem from="1789904234396" duration="60000" />
-      <workItem from="1789904958133" duration="2706000" />
+      <workItem from="1789904958133" duration="6301000" />
     </task>
     <task id="LOCAL-00001" summary="any html else">
       <option name="closed" value="true" />
@@ -108,7 +112,23 @@
       <option name="project" value="LOCAL" />
       <updated>1789905521250</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="npm and vite">
+      <option name="closed" value="true" />
+      <created>1789907983364</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1789907983364</updated>
+    </task>
+    <task id="LOCAL-00006" summary="React">
+      <option name="closed" value="true" />
+      <created>1789910166748</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1789910166748</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,7 +149,9 @@
     <MESSAGE value="any html else" />
     <MESSAGE value="update any words" />
     <MESSAGE value="模块化" />
-    <option name="LAST_COMMIT_MESSAGE" value="模块化" />
+    <MESSAGE value="npm and vite" />
+    <MESSAGE value="React" />
+    <option name="LAST_COMMIT_MESSAGE" value="React" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
