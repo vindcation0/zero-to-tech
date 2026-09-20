@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: zero-to-tech-server
+
+  # 导入抽离的独立密钥与用户配置文件
+  config:
+    import:
+      - optional:classpath:application-secret.yml
+      - optional:file:./application-secret.yml
+
+  # 数据源：引用 application-secret.yml 中 custom.datasource 的配置
+  datasource:
+    url: jdbc:mysql://${custom.datasource.host:localhost}:${custom.datasource.port:3306}/${custom.datasource.database:zero_to_tech}?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: ${custom.datasource.username:root}
+    password: ${custom.datasource.password:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # 数据库脚本初始化（启动时若不存在则执行 schema.sql 建表）
+  sql:
+    init:
+      mode: always
+
+  # Spring AI 大模型配置：引用 application-secret.yml 中 custom.ai 的密钥
+  ai:
+    openai:
+      api-key: ${custom.ai.api-key:}
+      base-url: https://api.deepseek.com
+      chat:
+        options:
+          model: deepseek-chat
+          temperature: 0.3
+
+# MyBatis-Plus 全局统一配置
+mybatis-plus:
+  configuration:
+    # 开启数据库下划线字段到 Java 驼峰属性映射（如 created_at -> createdAt）
+    map-underscore-to-camel-case: true
+    # 控制台打印 SQL，便于开发调试
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      # 主键自增模式
+      id-type: auto

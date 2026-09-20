@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // 文字实验室的"输入区"卡片：
 // 接收 onAnalyze 回调和 loading 状态，点击“开始分析”时将文本通知父组件发起请求
-export default function InputCard({ onAnalyze, loading }) {
+export default function InputCard({ onAnalyze, loading, initialText }) {
   const [text, setText] = useState("今天的风很轻，适合把脑海里的想法慢慢写下来。");
+
+  useEffect(() => {
+    if (initialText !== undefined && initialText !== null) {
+      setText(initialText);
+    }
+  }, [initialText]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

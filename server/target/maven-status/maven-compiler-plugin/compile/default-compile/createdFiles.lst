@@ -1,0 +1,7 @@
+com\zerototech\model\AnalyzeResult.class
+com\zerototech\entity\AnalysisRecord.class
+com\zerototech\config\WebConfig.class
+com\zerototech\mapper\AnalysisRecordMapper.class
+com\zerototech\controller\TextLabController.class
+com\zerototech\model\AnalyzeRequest.class
+com\zerototech\Application.class

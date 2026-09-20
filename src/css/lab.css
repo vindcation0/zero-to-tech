@@ -113,3 +113,103 @@
   font-weight: 600;
   color: var(--text-main);
 }
+
+/* === 历史记录卡片 === */
+.history-panel {
+  grid-column: 1 / -1;
+  margin-top: 12px;
+}
+
+.history-list {
+  display: grid;
+  gap: 10px;
+}
+
+.history-empty {
+  color: var(--text-muted);
+  font-size: 15px;
+  padding: 24px 0;
+  text-align: center;
+}
+
+.history-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  border-radius: var(--radius-soft);
+  background: var(--surface-soft);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.history-row:hover {
+  background: var(--surface);
+  border-color: var(--border-soft);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.history-main-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.history-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+
+.history-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.history-side-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.history-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(0, 113, 227, 0.1);
+  color: var(--brand);
+}
+
+.history-score {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.history-delete-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.history-delete-btn:hover {
+  background: rgba(255, 59, 48, 0.1);
+  color: #ff3b30;
+}
+

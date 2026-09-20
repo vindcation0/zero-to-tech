@@ -4,13 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7807b5c6-f6eb-4fd6-b1c1-14573374538b" name="更改" comment="React">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="7807b5c6-f6eb-4fd6-b1c1-14573374538b" name="更改" comment="Spring AI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zero-to-tech.iml" beforeDir="false" afterPath="$PROJECT_DIR$/zero-to-tech.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/zerototech/controller/TextLabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/zerototech/controller/TextLabController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/com/zerototech/controller/TextLabController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/com/zerototech/controller/TextLabController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/server-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/server-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/server-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/server-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InputCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TextLabPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TextLabPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/lab.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/lab.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,34 +57,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Maven.server [package].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.Application.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "ignore.preview.features.used": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/vindacation/Desktop/zero-to-tech/src",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "项目",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.fileTypes",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Maven.server [package].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Application.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/vindacation/Desktop/zero-to-tech/src&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\vindacation\Desktop\zero-to-tech\src" />
@@ -107,6 +116,13 @@
       <workItem from="1789912000313" duration="156000" />
       <workItem from="1789912179844" duration="64000" />
       <workItem from="1789912258130" duration="2602000" />
+      <workItem from="1789916964502" duration="201000" />
+      <workItem from="1789917176625" duration="19000" />
+      <workItem from="1789917222846" duration="280000" />
+      <workItem from="1789969174319" duration="70000" />
+      <workItem from="1789969440446" duration="122000" />
+      <workItem from="1789969586869" duration="15000" />
+      <workItem from="1789985770400" duration="421000" />
     </task>
     <task id="LOCAL-00001" summary="any html else">
       <option name="closed" value="true" />
@@ -164,7 +180,23 @@
       <option name="project" value="LOCAL" />
       <updated>1789911592268</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Spring ai">
+      <option name="closed" value="true" />
+      <created>1789917162631</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1789917162631</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Spring AI">
+      <option name="closed" value="true" />
+      <created>1789917314567</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1789917314568</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,7 +220,9 @@
     <MESSAGE value="npm and vite" />
     <MESSAGE value="React+java 引入初始改造" />
     <MESSAGE value="React" />
-    <option name="LAST_COMMIT_MESSAGE" value="React" />
+    <MESSAGE value="Spring ai" />
+    <MESSAGE value="Spring AI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spring AI" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
