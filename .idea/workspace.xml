@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7807b5c6-f6eb-4fd6-b1c1-14573374538b" name="更改" comment="React">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InputCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ResultCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ResultCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TextLabPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TextLabPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zero-to-tech.iml" beforeDir="false" afterPath="$PROJECT_DIR$/zero-to-tech.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,16 +51,27 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "Maven.server [package].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.Application.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
+    "ignore.preview.features.used": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/vindacation/Desktop/zero-to-tech/src",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.fileTypes",
     "vue.rearranger.settings.migration": "true"
   }
@@ -67,6 +82,15 @@
       <recent name="C:\Users\vindacation\Desktop\zero-to-tech" />
       <recent name="C:\Users\vindacation\Desktop\zero-to-tech\src\components" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.zerototech.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -79,6 +103,10 @@
       <workItem from="1789895686249" duration="1035000" />
       <workItem from="1789904234396" duration="60000" />
       <workItem from="1789904958133" duration="6301000" />
+      <workItem from="1789911542386" duration="446000" />
+      <workItem from="1789912000313" duration="156000" />
+      <workItem from="1789912179844" duration="64000" />
+      <workItem from="1789912258130" duration="2602000" />
     </task>
     <task id="LOCAL-00001" summary="any html else">
       <option name="closed" value="true" />
@@ -128,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789910166748</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="React">
+      <option name="closed" value="true" />
+      <created>1789911592267</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1789911592268</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +186,7 @@
     <MESSAGE value="update any words" />
     <MESSAGE value="模块化" />
     <MESSAGE value="npm and vite" />
+    <MESSAGE value="React+java 引入初始改造" />
     <MESSAGE value="React" />
     <option name="LAST_COMMIT_MESSAGE" value="React" />
   </component>
