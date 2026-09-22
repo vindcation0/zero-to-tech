@@ -1,2 +1,7 @@
 node_modules
 dist
+target/
+server/target/
+application-secret.yml
+server/application-secret.yml
+*.log

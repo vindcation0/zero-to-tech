@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7807b5c6-f6eb-4fd6-b1c1-14573374538b" name="更改" comment="Spring AI">
+    <list default="true" id="7807b5c6-f6eb-4fd6-b1c1-14573374538b" name="更改" comment="readMe">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/zerototech/controller/TextLabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/zerototech/controller/TextLabController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/zerototech/entity/AnalysisRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/zerototech/entity/AnalysisRecord.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/application-secret.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/application-secret.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/com/zerototech/controller/TextLabController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/com/zerototech/controller/TextLabController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/static/index.html" afterDir="false" />
@@ -17,7 +21,7 @@
       <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/server-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/server-0.0.1-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/server-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/server-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InputCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ResultCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ResultCard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TextLabPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TextLabPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/lab.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/lab.css" afterDir="false" />
     </list>
@@ -122,7 +126,13 @@
       <workItem from="1789969174319" duration="70000" />
       <workItem from="1789969440446" duration="122000" />
       <workItem from="1789969586869" duration="15000" />
-      <workItem from="1789985770400" duration="421000" />
+      <workItem from="1789985770400" duration="2645000" />
+      <workItem from="1789993095053" duration="2413000" />
+      <workItem from="1790003175396" duration="657000" />
+      <workItem from="1790003849101" duration="206000" />
+      <workItem from="1790004657842" duration="361000" />
+      <workItem from="1790054559768" duration="1514000" />
+      <workItem from="1790075531795" duration="328000" />
     </task>
     <task id="LOCAL-00001" summary="any html else">
       <option name="closed" value="true" />
@@ -196,7 +206,47 @@
       <option name="project" value="LOCAL" />
       <updated>1789917314568</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="历史记录，配置文件分离">
+      <option name="closed" value="true" />
+      <created>1789986291131</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1789986291131</updated>
+    </task>
+    <task id="LOCAL-00011" summary="历史记录，配置文件分离">
+      <option name="closed" value="true" />
+      <created>1789986684978</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1789986684978</updated>
+    </task>
+    <task id="LOCAL-00012" summary="历史记录，配置文件分离">
+      <option name="closed" value="true" />
+      <created>1789987387838</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1789987387838</updated>
+    </task>
+    <task id="LOCAL-00013" summary="历史记录，配置文件分离">
+      <option name="closed" value="true" />
+      <created>1789987433069</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1789987433069</updated>
+    </task>
+    <task id="LOCAL-00014" summary="readMe">
+      <option name="closed" value="true" />
+      <created>1789987994923</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1789987994923</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,8 +271,11 @@
     <MESSAGE value="React+java 引入初始改造" />
     <MESSAGE value="React" />
     <MESSAGE value="Spring ai" />
+    <MESSAGE value="增加了每次分析的历史记录" />
     <MESSAGE value="Spring AI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Spring AI" />
+    <MESSAGE value="历史记录，配置文件分离" />
+    <MESSAGE value="readMe" />
+    <option name="LAST_COMMIT_MESSAGE" value="readMe" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -213,3 +213,57 @@
   color: #ff3b30;
 }
 
+/* === AI 深度语境赏析与流式打字机效果 === */
+.commentary-box {
+  background: var(--surface-soft);
+  border-left: 3px solid var(--brand);
+  position: relative;
+}
+
+.commentary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.commentary-header span {
+  margin-bottom: 0;
+}
+
+.streaming-indicator {
+  font-size: 11px;
+  color: var(--brand);
+  background: rgba(0, 113, 227, 0.12);
+  padding: 2px 8px;
+  border-radius: 999px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.commentary-text {
+  color: var(--text-main);
+  font-size: 15px;
+  line-height: 1.65;
+  letter-spacing: -0.2px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.typing-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--brand);
+  font-weight: 700;
+  animation: blink 0.8s infinite steps(1);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+

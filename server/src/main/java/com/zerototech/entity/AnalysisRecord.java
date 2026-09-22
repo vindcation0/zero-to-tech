@@ -8,13 +8,16 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.time.LocalDateTime;
 
 /**
- * 文字分析记录实体（MyBatis-Plus 规范）
+ * 文字分析记录实体（MyBatis-Plus 规范，支持按用户隔离）
  */
 @TableName("analysis_record")
 public class AnalysisRecord {
 
     @TableId(type = IdType.AUTO)
     private Long id;
+
+    @TableField("user_id")
+    private String userId;
 
     private String text;
 
@@ -30,7 +33,8 @@ public class AnalysisRecord {
     public AnalysisRecord() {
     }
 
-    public AnalysisRecord(String text, String pinyin, Double score, String sentiment) {
+    public AnalysisRecord(String userId, String text, String pinyin, Double score, String sentiment) {
+        this.userId = userId;
         this.text = text;
         this.pinyin = pinyin;
         this.score = score;
@@ -44,6 +48,14 @@ public class AnalysisRecord {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getText() {
