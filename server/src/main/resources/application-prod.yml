@@ -1,0 +1,17 @@
+
+spring:
+  # 生产环境 MySQL 数据源（支持环境变量覆盖，默认回退安全值）
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:zero_to_tech}?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+
+  # 生产环境 DeepSeek API Key（通过 DEEPSEEK_API_KEY 环境变量注入）
+  ai:
+    openai:
+      api-key: ${DEEPSEEK_API_KEY:}
+
+# 生产环境关闭冗余的控制台 SQL 打印，保障性能
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
