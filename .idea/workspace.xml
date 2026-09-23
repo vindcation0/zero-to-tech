@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7807b5c6-f6eb-4fd6-b1c1-14573374538b" name="更改" comment="初步引入memory">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/zerototech/controller/TextLabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/zerototech/controller/TextLabController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/com/zerototech/controller/TextLabController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/com/zerototech/controller/TextLabController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/server-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/server-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/server-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/server-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+    <list default="true" id="7807b5c6-f6eb-4fd6-b1c1-14573374538b" name="更改" comment="修改了项目结构">
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/zerototech/service/impl/TextLabServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/zerototech/service/impl/TextLabServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +127,7 @@
       <workItem from="1790133865225" duration="8000" />
       <workItem from="1790168862588" duration="580000" />
       <workItem from="1790169713516" duration="8000" />
+      <workItem from="1790169733761" duration="321000" />
     </task>
     <task id="LOCAL-00001" summary="any html else">
       <option name="closed" value="true" />
@@ -310,7 +305,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790133779260</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="修改了项目结构">
+      <option name="closed" value="true" />
+      <created>1790169836565</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1790169836565</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,7 +349,8 @@
     <MESSAGE value="阻塞问题审阅" />
     <MESSAGE value="重新打包了文件" />
     <MESSAGE value="初步引入memory" />
-    <option name="LAST_COMMIT_MESSAGE" value="初步引入memory" />
+    <MESSAGE value="修改了项目结构" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改了项目结构" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

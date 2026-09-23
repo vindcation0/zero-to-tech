@@ -242,6 +242,7 @@ public class TextLabServiceImpl implements TextLabService {
                     return "{\"type\":\"chunk\",\"content\":\"\"}";
                 }
             })
+                //标记最终完成
             .concatWith(Mono.just("{\"type\":\"done\"}"))
             .onErrorResume(err -> {
                 try {
