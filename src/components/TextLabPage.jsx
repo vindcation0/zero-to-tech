@@ -4,6 +4,7 @@ import PageHeading from "./PageHeading.jsx";
 import AnimatedCardGrid from "./AnimatedCardGrid.jsx";
 import InputCard from "./InputCard.jsx";
 import ResultCard from "./ResultCard.jsx";
+import FollowUpCard from "./FollowUpCard.jsx";
 import HistoryCard from "./HistoryCard.jsx";
 import { textLab } from "../data/site.js";
 
@@ -22,6 +23,9 @@ export default function TextLabPage({ current, onNavigate }) {
   const [isStreaming, setIsStreaming] = useState(false);
   const [history, setHistory] = useState([]);
   const [inputText, setInputText] = useState("");
+
+  const [chatMessages, setChatMessages] = useState([]);
+  const [followUpLoading, setFollowUpLoading] = useState(false);
 
   // 获取历史记录 (携带 Cookie 凭证)
   const fetchHistory = async () => {
@@ -52,6 +56,7 @@ export default function TextLabPage({ current, onNavigate }) {
     setLoading(true);
     setIsStreaming(true);
     setCommentary(""); // 清空旧的解读，准备开始打字机输出
+    setChatMessages([]); // 分析新文本时重置多轮对话
 
     try {
       const response = await fetch("/api/analyze/stream", {
@@ -122,6 +127,121 @@ export default function TextLabPage({ current, onNavigate }) {
     }
   };
 
+  // 触发后端多轮追问 (携带 Cookie 凭证，复用上下文记忆)
+  const handleSendFollowUp = async (question) => {
+    if (!question || !question.trim()) return;
+    const trimmed = question.trim();
+
+    // 立即向界面追加用户提问和空的 assistant 占位气泡
+    setChatMessages((prev) => [
+      ...prev,
+      { role: "user", content: trimmed },
+      { role: "assistant", content: "", isStreaming: true },
+    ]);
+    setFollowUpLoading(true);
+
+    try {
+      const res = await fetch("/api/chat/stream", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ message: trimmed }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`追问接口异常 HTTP ${res.status}`);
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder("utf-8");
+      let buffer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
+
+        for (const line of lines) {
+          const trimmedLine = line.trim();
+          if (!trimmedLine || !trimmedLine.startsWith("data:")) continue;
+
+          const jsonStr = trimmedLine.slice(5).trim();
+          if (!jsonStr) continue;
+
+          try {
+            const msg = JSON.parse(jsonStr);
+            if (msg.type === "chunk") {
+              if (msg.content) {
+                setChatMessages((prev) => {
+                  const next = [...prev];
+                  const lastIndex = next.length - 1;
+                  if (lastIndex >= 0 && next[lastIndex].role === "assistant") {
+                    next[lastIndex] = {
+                      ...next[lastIndex],
+                      content: next[lastIndex].content + msg.content,
+                    };
+                  }
+                  return next;
+                });
+              }
+            } else if (msg.type === "done") {
+              setChatMessages((prev) => {
+                const next = [...prev];
+                const lastIndex = next.length - 1;
+                if (lastIndex >= 0 && next[lastIndex].role === "assistant") {
+                  next[lastIndex] = {
+                    ...next[lastIndex],
+                    isStreaming: false,
+                  };
+                }
+                return next;
+              });
+            } else if (msg.type === "error") {
+              alert(`追问回答出错: ${msg.message}`);
+            }
+          } catch (e) {
+            console.warn("解析追问 SSE 异常:", jsonStr, e);
+          }
+        }
+      }
+    } catch (err) {
+      console.error("追问失败:", err);
+      alert(`追问请求失败: ${err.message}`);
+      // 移除未完成的气泡
+      setChatMessages((prev) => prev.filter((m) => m.content || !m.isStreaming));
+    } finally {
+      setFollowUpLoading(false);
+      setChatMessages((prev) => {
+        const next = [...prev];
+        const lastIndex = next.length - 1;
+        if (lastIndex >= 0 && next[lastIndex].role === "assistant") {
+          next[lastIndex] = {
+            ...next[lastIndex],
+            isStreaming: false,
+          };
+        }
+        return next;
+      });
+    }
+  };
+
+  // 清空多轮对话记忆
+  const handleClearChat = async () => {
+    try {
+      await fetch("/api/chat/clear", {
+        method: "POST",
+        credentials: "include",
+      });
+    } catch (err) {
+      console.warn("清空记忆请求失败:", err.message);
+    } finally {
+      setChatMessages([]);
+    }
+  };
+
   // 选中某条历史记录，回显到结果区和输入框
   const handleSelectHistory = (item) => {
     setResult({
@@ -133,6 +253,7 @@ export default function TextLabPage({ current, onNavigate }) {
     setCommentary(`【历史记录】情绪评分：${Number(item.score).toFixed(2)}，标签：${item.sentiment}。原文：“${item.text}”`);
     setIsStreaming(false);
     setInputText(item.text);
+    setChatMessages([]); // 切换历史条目时重置追问对话
   };
 
   // 删除某条历史记录 (携带 Cookie 凭证)
@@ -160,7 +281,19 @@ export default function TextLabPage({ current, onNavigate }) {
       </article>
 
       <InputCard onAnalyze={handleAnalyze} loading={loading} initialText={inputText} />
-      <ResultCard result={result} commentary={commentary} isStreaming={isStreaming} loading={loading} />
+      <ResultCard
+        result={result}
+        commentary={commentary}
+        isStreaming={isStreaming}
+        loading={loading}
+      />
+      <FollowUpCard
+        chatMessages={chatMessages}
+        followUpLoading={followUpLoading}
+        isStreaming={isStreaming}
+        onSendFollowUp={handleSendFollowUp}
+        onClearChat={handleClearChat}
+      />
       <HistoryCard history={history} onSelect={handleSelectHistory} onDelete={handleDeleteHistory} />
     </AnimatedCardGrid>
   );
