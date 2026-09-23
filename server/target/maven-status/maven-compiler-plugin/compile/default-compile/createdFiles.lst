@@ -1,10 +1,14 @@
+com\zerototech\tool\UserEmotionStatsTool.class
 com\zerototech\model\AnalyzeResult.class
+com\zerototech\tool\UserEmotionStatsTool$Response.class
 com\zerototech\config\WebConfig.class
 com\zerototech\mapper\AnalysisRecordMapper.class
 com\zerototech\service\impl\TextLabServiceImpl.class
+com\zerototech\tool\UserEmotionStatsTool$Response$SentenceSnapshot.class
 com\zerototech\util\UserSessionUtils.class
 com\zerototech\entity\AnalysisRecord.class
 com\zerototech\service\TextLabService.class
+com\zerototech\tool\UserEmotionStatsTool$Request.class
 com\zerototech\controller\TextLabController.class
 com\zerototech\model\AnalyzeRequest.class
 com\zerototech\Application.class

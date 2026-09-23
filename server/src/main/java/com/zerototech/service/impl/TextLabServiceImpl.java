@@ -23,6 +23,8 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.zerototech.tool.UserEmotionStatsTool;
+
 /**
  * 语言与文本分析业务实现类 (Service 业务逻辑层)
  */
@@ -32,14 +34,17 @@ public class TextLabServiceImpl implements TextLabService {
     private final ChatClient chatClient;
     private final AnalysisRecordMapper recordMapper;
     private final ChatMemory chatMemory;
+    private final UserEmotionStatsTool userEmotionStatsTool;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public TextLabServiceImpl(
         ChatClient.Builder chatClientBuilder,
         AnalysisRecordMapper recordMapper,
-        ChatMemory chatMemory
+        ChatMemory chatMemory,
+        UserEmotionStatsTool userEmotionStatsTool
     ) {
         this.chatMemory = chatMemory;
+        this.userEmotionStatsTool = userEmotionStatsTool;
         // 装配多轮会话记忆拦截器 (MessageChatMemoryAdvisor)
         this.chatClient = chatClientBuilder
             .defaultAdvisors(new MessageChatMemoryAdvisor(chatMemory))
@@ -221,6 +226,7 @@ public class TextLabServiceImpl implements TextLabService {
             .system("""
                 你是一个博学、敏锐且善于启发的中文文学与情感导师。
                 请结合当前对话上下文深入回答用户的追问。
+                当用户询问其历史记录、情绪走势、心境变化或往期输入风格时，请自动调用 analyzeUserHistoryEmotion 工具获取其在数据库中的真实统计数据，并结合数据给出充满人文关怀与洞察力的深度解读。
                 回答时请充分运用优雅的 Markdown 格式：
                 - 适度加粗核心论点或关键词（如 **诗眼**、**意境**）
                 - 诗句或原文引用使用引用块（> 引用内容）
@@ -228,6 +234,8 @@ public class TextLabServiceImpl implements TextLabService {
                 - 段落清晰，言辞富有文采与启发性。
                 """)
             .advisors(a -> a.param(AbstractChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY, userId))
+            .toolContext(Map.of("userId", userId))
+            .functions(userEmotionStatsTool.getFunctionCallback())
             .user(message.trim())
             .stream()
             .content()
