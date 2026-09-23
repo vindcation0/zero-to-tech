@@ -43,6 +43,7 @@ public class UserEmotionStatsTool {
         List<SentenceSnapshot> recentSnapshots,  // 最近代表性诗句快照
         String statusNote                        // 样本状态说明
     ) {
+        //内部类
         public record SentenceSnapshot(String text, double score, String sentiment) {}
     }
 
@@ -61,7 +62,7 @@ public class UserEmotionStatsTool {
         if (userId == null || userId.isBlank()) {
             return new Response(0, 0.5, "未登录用户", Map.of(), List.of(), "未能识别当前用户凭证");
         }
-
+        //限制从数据库中查询的数量
         int queryLimit = (request != null && request.limit() != null && request.limit() > 0)
             ? Math.min(request.limit(), 20)
             : 10;
@@ -76,14 +77,16 @@ public class UserEmotionStatsTool {
         if (records.isEmpty()) {
             return new Response(0, 0.5, "无历史记录", Map.of(), List.of(), "该用户目前尚未保存过任何历史分析文本");
         }
-
+        // 情绪分组，判断每个情绪的数量
         double sum = 0.0;
         Map<String, Integer> counts = new HashMap<>();
         List<Response.SentenceSnapshot> snapshots = new ArrayList<>();
 
         for (AnalysisRecord r : records) {
+            //情绪总分
             double s = (r.getScore() != null) ? r.getScore() : 0.5;
             sum += s;
+            // 情绪分组，判断每个情绪的数量
             String sent = (r.getSentiment() != null && !r.getSentiment().isBlank()) ? r.getSentiment() : "中性平和";
             counts.put(sent, counts.getOrDefault(sent, 0) + 1);
 
@@ -91,9 +94,10 @@ public class UserEmotionStatsTool {
                 snapshots.add(new Response.SentenceSnapshot(r.getText(), s, sent));
             }
         }
-
+        //这两行代码分别完成了计算保留两位小数的平均分以及找出出现频次最多的主导情绪标签。
         double avg = Math.round((sum / records.size()) * 100.0) / 100.0;
         String dominant = counts.entrySet().stream()
+                //根据value比较找到最大value的entry
             .max(Map.Entry.comparingByValue())
             .map(Map.Entry::getKey)
             .orElse("中性平和");

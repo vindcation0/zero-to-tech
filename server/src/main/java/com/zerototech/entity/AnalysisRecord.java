@@ -24,7 +24,7 @@ public class AnalysisRecord {
     private String pinyin;
 
     private Double score;
-
+    //情绪评价
     private String sentiment;
 
     @TableField("created_at")
