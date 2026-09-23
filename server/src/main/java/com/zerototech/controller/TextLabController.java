@@ -77,6 +77,7 @@ public class TextLabController {
         Flux<String> rawStream = chatClient.prompt()
             .user(promptText)
             .stream()
+                //提取文本
             .content()
             .filter(s -> s != null && !s.isEmpty());
 
@@ -84,12 +85,15 @@ public class TextLabController {
         return Flux.create(sink -> {
             //缓冲区：：
             StringBuilder headerBuffer = new StringBuilder();
+            //？拼接文本 COMMENTARY
             StringBuilder commentaryBuffer = new StringBuilder();
+            //flag:检查是否处理输出完 COMMENTARY 内容之前的标志
             AtomicBoolean headerParsed = new AtomicBoolean(false);
             AtomicReference<String> pinyinRef = new AtomicReference<>("");
             AtomicReference<Double> scoreRef = new AtomicReference<>(0.5);
             AtomicReference<String> sentimentRef = new AtomicReference<>("中性平和");
-            // subscribe？
+
+            // call文本发送ai接受返回信息
             rawStream.subscribe(
                 chunk -> {
                     // if 是否截取完前置数据： 然后才文本的流式输出
@@ -97,9 +101,12 @@ public class TextLabController {
                         //否：
                         headerBuffer.append(chunk);
                         String current = headerBuffer.toString();
+                        //没有读取到返回-1（返回的 “[” 下标
                         int idx = current.indexOf("[COMMENTARY]");
-                        //COMMENTARY前面的内容是可以立即返回的：后面的内容是需要流式输出的
-                        //判断当前读取到了COMMENTARY：需要流式输出的内容
+
+
+                        //COMMENTARY前面的内容是可以立即返回的：后面的内容是需要流式输出的、
+                        //这里处理立即返回的内容
                         if (idx != -1) {
                             headerParsed.set(true);
                             String headerPart = current.substring(0, idx);
@@ -115,7 +122,7 @@ public class TextLabController {
                                     "score", scoreRef.get(),
                                     "sentiment", sentimentRef.get()
                                 ));
-                                //sink？
+                                //
                                 sink.next(metaJson);
                             } catch (Exception e) {
                                 sink.next("{\"type\":\"meta\",\"text\":\"" + inputText + "\",\"pinyin\":\"\",\"score\":0.5,\"sentiment\":\"中性平和\"}");
@@ -132,6 +139,7 @@ public class TextLabController {
 
                         } else if (current.length() > 250) {
                             // 防御性超时：若250字符内未见标记，强行解析放行
+                            // 幻觉没有规定的输出COMMENTARY字段导致缓存区过大了
                             headerParsed.set(true);
                             parseHeaders(current, pinyinRef, scoreRef, sentimentRef);
                             try {
@@ -144,6 +152,7 @@ public class TextLabController {
                                 )));
                             } catch (Exception ignored) {}
                         }
+                        //处理流式输出的内容
                     } else {
                         // header 已解析，所有后续 Token 实时直推给前端打字机！
                         commentaryBuffer.append(chunk);
@@ -167,7 +176,8 @@ public class TextLabController {
                     sink.complete();
                 },
                 () -> {
-                    // 流正常结束：兜底检查 meta 是否已下发
+                    // 流正常结束：兜底检查 meta 是否已下发：
+                    // 再次检查
                     if (!headerParsed.get()) {
                         parseHeaders(headerBuffer.toString(), pinyinRef, scoreRef, sentimentRef);
                         try {
