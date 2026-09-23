@@ -22,7 +22,7 @@ spring:
       base-url: https://api.deepseek.com
       chat:
         options:
-          model: deepseek-chat
+          model: deepseek-flash
           temperature: 0.3
 
 # MyBatis-Plus 全局基础配置

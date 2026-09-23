@@ -2,7 +2,12 @@ import { useEffect, useRef } from "react";
 import { animate, scrambleText } from "animejs";
 
 // 分析结果卡片：展示后端返回的原文、拼音、情感分数、情绪判断与流式深度赏析
-export default function ResultCard({ result, commentary, isStreaming, loading }) {
+export default function ResultCard({
+  result,
+  commentary,
+  isStreaming,
+  loading,
+}) {
   const cardRef = useRef(null);
   const scoreRef = useRef(null);
 

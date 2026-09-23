@@ -17,6 +17,12 @@ import org.springframework.http.MediaType;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import org.springframework.ai.chat.client.advisor.AbstractChatMemoryAdvisor;
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
+import org.springframework.ai.chat.memory.ChatMemory;
+import org.springframework.ai.chat.messages.AssistantMessage;
+import org.springframework.ai.chat.messages.UserMessage;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -32,10 +38,19 @@ public class TextLabController {
 
     private final ChatClient chatClient;
     private final AnalysisRecordMapper recordMapper;
+    private final ChatMemory chatMemory;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public TextLabController(ChatClient.Builder chatClientBuilder, AnalysisRecordMapper recordMapper) {
-        this.chatClient = chatClientBuilder.build();
+    public TextLabController(
+        ChatClient.Builder chatClientBuilder,
+        AnalysisRecordMapper recordMapper,
+        ChatMemory chatMemory
+    ) {
+        this.chatMemory = chatMemory;
+        // 装配多轮会话记忆拦截器 (MessageChatMemoryAdvisor)
+        this.chatClient = chatClientBuilder
+            .defaultAdvisors(new MessageChatMemoryAdvisor(chatMemory))
+            .build();
         this.recordMapper = recordMapper;
     }
 
@@ -207,6 +222,23 @@ public class TextLabController {
                         System.err.println("保存分析记录失败: " + e.getMessage());
                     }
 
+                    // 沉淀本轮分析结果到 ChatMemory 作为后续多轮追问的上下文锚点
+                    try {
+                        chatMemory.clear(userId); // 开启针对当前句子的全新追问记忆
+                        chatMemory.add(userId, List.of(
+                            new UserMessage("请深入分析这句中文：“" + inputText + "”"),
+                            new AssistantMessage(
+                                "我已经对文本《" + inputText + "》完成了深度分析。\n" +
+                                "【拼音】" + pinyinRef.get() + "\n" +
+                                "【情感】" + sentimentRef.get() + "（得分 " + scoreRef.get() + "）\n" +
+                                "【赏析解读】" + commentaryBuffer.toString() + "\n" +
+                                "你可以就这句文字的背景故事、意境手法、现实启示或现代改写随时向我追问！"
+                            )
+                        ));
+                    } catch (Exception e) {
+                        System.err.println("沉淀初始会话记忆失败: " + e.getMessage());
+                    }
+
                     // 下发完成帧 done
                     try {
                         sink.next(objectMapper.writeValueAsString(Map.of(
@@ -218,6 +250,71 @@ public class TextLabController {
                 }
             );
         });
+    }
+
+    /**
+     * 多轮追问流式接口 (SSE: text/event-stream)
+     * 基于 MessageChatMemoryAdvisor 自动装配用户的上下文记忆
+     */
+    @PostMapping(value = "/chat/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<String> chatStream(
+        @RequestBody Map<String, String> body,
+        HttpServletRequest request,
+        HttpServletResponse response
+    ) {
+        String message = body.get("message");
+        if (message == null || message.isBlank()) {
+            return Flux.just("{\"type\":\"error\",\"message\":\"追问内容不能为空\"}");
+        }
+
+        String userId = UserSessionUtils.getOrCreateUserId(request, response);
+
+        return chatClient.prompt()
+            .system("""
+                你是一个博学、敏锐且善于启发的中文文学与情感导师。
+                请结合当前对话上下文深入回答用户的追问。
+                回答时请充分运用优雅的 Markdown 格式：
+                - 适度加粗核心论点或关键词（如 **诗眼**、**意境**）
+                - 诗句或原文引用使用引用块（> 引用内容）
+                - 分条剖析使用列表项（- 或 1. 2.）
+                - 段落清晰，言辞富有文采与启发性。
+                """)
+            .advisors(a -> a.param(AbstractChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY, userId))
+            .user(message.trim())
+            .stream()
+            .content()
+            .filter(s -> s != null && !s.isEmpty())
+            .map(chunk -> {
+                try {
+                    return objectMapper.writeValueAsString(Map.of(
+                        "type", "chunk",
+                        "content", chunk
+                    ));
+                } catch (Exception e) {
+                    return "{\"type\":\"chunk\",\"content\":\"\"}";
+                }
+            })
+            .concatWith(Mono.just("{\"type\":\"done\"}"))
+            .onErrorResume(err -> {
+                try {
+                    return Flux.just(objectMapper.writeValueAsString(Map.of(
+                        "type", "error",
+                        "message", err.getMessage() != null ? err.getMessage() : "追问处理异常"
+                    )));
+                } catch (Exception e) {
+                    return Flux.just("{\"type\":\"error\",\"message\":\"未知异常\"}");
+                }
+            });
+    }
+
+    /**
+     * 清空当前用户的会话记忆
+     */
+    @PostMapping("/chat/clear")
+    public ResponseEntity<Map<String, Object>> clearChat(HttpServletRequest request, HttpServletResponse response) {
+        String userId = UserSessionUtils.getOrCreateUserId(request, response);
+        chatMemory.clear(userId);
+        return ResponseEntity.ok(Map.of("success", true, "message", "会话记忆已清空"));
     }
 
     /**
